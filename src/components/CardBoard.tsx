@@ -1,9 +1,10 @@
 import { FC } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { AppState } from "../store";
-import { cardSlice, Card } from "../stores/card";
+import { cardSlice, CardProps } from "../stores/card";
+import Card from "../parts/Card";
 const CardBoard:FC=()=>{
-	const {cardArray} = useSelector<AppState, {cardArray:Card[]}>((state)=>{
+	const {cardArray} = useSelector<AppState, {cardArray:CardProps[]}>((state)=>{
 		return{
 			cardArray:state.card.cards
 		}
@@ -16,7 +17,7 @@ const CardBoard:FC=()=>{
 	return(
 		<>
 			<button onClick={update}>update</button>
-			{JSON.stringify(cardArray)}
+			{cardArray.map((card)=>{return(<Card {...card} />)})}
 		</>
 	)
 }

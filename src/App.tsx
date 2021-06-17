@@ -1,13 +1,13 @@
 import {FC} from 'react';
 import { Provider } from 'react-redux';
 import store from './store';
-import Card from './components/Card';
+import CardBoard from './components/CardBoard';
 const App:FC=()=>{
   return(
     <>
       <Provider store={store}>
         HELLO
-        <Card />
+        <CardBoard />
       </Provider>
     </>
   )

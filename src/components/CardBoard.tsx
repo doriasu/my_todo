@@ -1,9 +1,9 @@
 import { FC } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { AppState } from "../store";
-import { cardSlice, CardState } from "../stores/card";
-const Card:FC=()=>{
-	const {cardArray} = useSelector<AppState, {cardArray:CardState[]}>((state)=>{
+import { cardSlice, Card } from "../stores/card";
+const CardBoard:FC=()=>{
+	const {cardArray} = useSelector<AppState, {cardArray:Card[]}>((state)=>{
 		return{
 			cardArray:state.card.cards
 		}
@@ -11,7 +11,7 @@ const Card:FC=()=>{
 	const dispatch = useDispatch();
 	const {pushCard} = cardSlice.actions;
 	const update =()=>{
-		dispatch(pushCard({id:1,title:"sample", text:"yeaaaaa", url:"localhost:8000", date:new Date()}))
+		dispatch(pushCard({id:1,title:"sample", text:"yeaaaaa", url:"localhost:8000",status:"DOING", date:new Date()}))
 	}
 	return(
 		<>
@@ -20,4 +20,4 @@ const Card:FC=()=>{
 		</>
 	)
 }
-export default Card;
+export default CardBoard;

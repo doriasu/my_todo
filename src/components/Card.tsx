@@ -10,4 +10,14 @@ const Card:FC=()=>{
 	})
 	const dispatch = useDispatch();
 	const {pushCard} = cardSlice.actions;
+	const update =()=>{
+		dispatch(pushCard({id:1,title:"sample", text:"yeaaaaa", url:"localhost:8000", date:new Date()}))
+	}
+	return(
+		<>
+			<button onClick={update}>update</button>
+			{JSON.stringify(cardArray)}
+		</>
+	)
 }
+export default Card;

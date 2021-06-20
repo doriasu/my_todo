@@ -10,14 +10,11 @@ const CardBoard:FC=()=>{
 		}
 	})
 	const dispatch = useDispatch();
-	const {pushCard} = cardSlice.actions;
-	const update =()=>{
-		dispatch(pushCard({id:1,title:"sample", text:"yeaaaaa", url:"localhost:8000",status:"DOING", date:new Date().toJSON()}))
-	}
+	const {pushCard, deleteCard} = cardSlice.actions;
+	
 	return(
 		<>
-			<button onClick={update}>update</button>
-			{cardArray.map((card)=>{return(<Card {...card} />)})}
+			{cardArray.map((card)=>{return(<Card key={card.id} delete={()=>dispatch(deleteCard(card.id))} {...card} />)})}
 		</>
 	)
 }

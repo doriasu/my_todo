@@ -1,6 +1,6 @@
 import { VFC } from "react";
 import { CardProps } from "../stores/card";
-const Card: VFC<CardProps> = (props: CardProps) => {
+const Card: VFC<CardProps&{delete:(id:number)=>void}> = (props: CardProps&{delete:(id:number)=>void}) => {
 	return (
 		<div key={props.id} className="max-w-md py-4 px-8 bg-white shadow-lg rounded-lg my-20">
 			<div>
@@ -10,6 +10,7 @@ const Card: VFC<CardProps> = (props: CardProps) => {
 			<div className="flex justify-end mt-4">
 				<a href="#" className="text-xl font-medium text-indigo-500">{props.date}</a>
 			</div>
+			<button onClick={()=>props.delete(props.id)}>delete</button>
 		</div>
 	)
 }

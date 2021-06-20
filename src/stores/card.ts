@@ -21,6 +21,9 @@ export const cardSlice = createSlice({
 		pushCard:(state, action:PayloadAction<CardProps>)=>{
 			// internally immer's method
 			state.cards.push(action.payload)
+		},
+		deleteCard:(state, action:PayloadAction<number>)=>{
+			return{cards:state.cards.filter(card=>card.id!==action.payload)}
 		}
 	}
 })

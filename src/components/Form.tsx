@@ -2,10 +2,12 @@ import { FC, useRef } from "react";
 import { useDispatch, useSelector} from "react-redux";
 import { AppState } from "../store";
 import { cardSlice } from "../stores/card";
+import { nowIdSlice } from "../stores/id";
 
 const Form: FC = () => {
 	const dispatch = useDispatch();
 	const { pushCard } = cardSlice.actions;
+	const {increment } = nowIdSlice.actions;
 	const titleRef = useRef<HTMLInputElement>(null);
 	const textRef = useRef<HTMLInputElement>(null);
 	const urlRef = useRef<HTMLInputElement>(null);
@@ -20,7 +22,11 @@ const Form: FC = () => {
 			const text = textRef.current.value;
 			if(urlRef.current){
 				const url = urlRef.current.value;
-				dispatch(pushCard({id:1,title:"sample", text:"yeaaaaa", url:"localhost:8000",status:"DOING", date:new Date().toJSON()}})
+				dispatch(pushCard({id:nowId,title:title, text:text, url:url,status:"TODO", date:new Date().toJSON()}))
+				dispatch(increment())
+			}else{
+				dispatch(pushCard({id:nowId,title:title, text:text, status:"TODO", date:new Date().toJSON()}))
+				dispatch(increment())
 			}
 		}	
 
@@ -48,7 +54,7 @@ const Form: FC = () => {
 					<input className="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="text" type="text" placeholder="url" ref={urlRef} />
 				</div>
 				<div className="flex items-center justify-between">
-					<button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
+					<button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button" onClick={addTodo}>
 						ADD TODO
 					</button>
 				</div>
@@ -58,3 +64,4 @@ const Form: FC = () => {
 
 	)
 }
+export default Form;

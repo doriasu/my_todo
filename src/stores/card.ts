@@ -6,7 +6,7 @@ export type CardProps = {
 	text:string;
 	url?:string;
 	status:CardStatus;
-	date:Date;
+	date:string;
 }
 export type CardArray = {
 	cards:CardProps[];

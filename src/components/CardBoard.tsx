@@ -12,7 +12,7 @@ const CardBoard:FC=()=>{
 	const dispatch = useDispatch();
 	const {pushCard} = cardSlice.actions;
 	const update =()=>{
-		dispatch(pushCard({id:1,title:"sample", text:"yeaaaaa", url:"localhost:8000",status:"DOING", date:new Date()}))
+		dispatch(pushCard({id:1,title:"sample", text:"yeaaaaa", url:"localhost:8000",status:"DOING", date:new Date().toJSON()}))
 	}
 	return(
 		<>

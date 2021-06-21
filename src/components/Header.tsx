@@ -1,5 +1,5 @@
-import { VFC } from "react";
 const Header = ()=>{
+	
 	return(
 		<div>
 			TODOAPPだよ！！

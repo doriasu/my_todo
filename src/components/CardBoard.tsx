@@ -13,9 +13,9 @@ const CardBoard:FC=()=>{
 	const {pushCard, deleteCard} = cardSlice.actions;
 	
 	return(
-		<>
+		<div className="static">
 			{cardArray.map((card)=>{return(<Card key={card.id} delete={()=>dispatch(deleteCard(card.id))} {...card} />)})}
-		</>
+		</div>
 	)
 }
 export default CardBoard;
